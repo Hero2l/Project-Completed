@@ -102,21 +102,19 @@ const JobListing = () => {
 
                 {/* Location Filter */}
                 <div className={showFilter ? "" : "max-lg:hidden"}>
-                    <h4 className='font-medium text-lg py-4 pt-14'>Search by Location</h4>
-                    <ul className='space-y-4 text-gray-600'>
-                        {
-                            JobLocations.map((location, index) => (
-                                <li key={index} className='flex gap-3 items-center'>
-                                    <input
-                                        className='scale-125'
-                                        type="checkbox"
-                                        onChange={() => handleLocationChange(location)}
-                                        checked={selectedLocations.includes(location)}
-                                    />
-                                    <label htmlFor={location} className='ml-2'>{location}</label>
-                                </li>
-                            ))
-                        }
+                    <h4 className="font-medium text-lg py-4 pt-14">Search by Location</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4 text-gray-600">
+                        {JobLocations.map((location, index) => (
+                            <li key={index} className="flex items-center gap-3">
+                                <input
+                                    className="scale-125"
+                                    type="checkbox"
+                                    onChange={() => handleLocationChange(location)}
+                                    checked={selectedLocations.includes(location)}
+                                />
+                                <label htmlFor={location} className="ml-2">{location}</label>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
