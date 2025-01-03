@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useAuth, useUser } from '@clerk/clerk-react';
+import { useLocation } from 'react-router-dom';
 
 export const AppContext = createContext();
 
@@ -38,7 +39,6 @@ export const AppProvider = (props) => {
 
             if (data.success) {
                 setJobs(data.jobs)
-                console.log(data.jobs)
             } else {
                 toast.error(data.message)
             }
@@ -60,7 +60,6 @@ export const AppProvider = (props) => {
 
             if (data.success) {
                 setcompanyData(data.company)
-                console.log(data)
             } else {
                 toast.error(data.message)
             }
@@ -90,7 +89,6 @@ export const AppProvider = (props) => {
         }
     }
 
-    // Function to fetch user applied applications
     const fetchUserApplications = async () => {
         try {
             const token = await getToken()
@@ -100,11 +98,15 @@ export const AppProvider = (props) => {
             if (data.success) {
                 setUserApplications(data.application)
             } else {
-                toast.error(data.message)
+                if (location.pathname === "/applications") { // Replace "/specific-page" with your page path
+                    toast.error(data.message)
+                }
             }
 
         } catch (error) {
-            toast.error(error.message)
+            if (location.pathname === "/applications") { // Replace "/specific-page" with your page path
+                toast.error(error.message)
+            }
         }
     }
 

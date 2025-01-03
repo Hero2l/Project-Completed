@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import Applications from './pages/Applications'
 import Home from './pages/Home'
 import ApplyJob from './pages/ApplyJob'
@@ -22,8 +22,13 @@ const App = () => {
       {showRecruiterLogin && <RecruiterLogin />}
       <ToastContainer />
       <Routes>
+        {/* Redirect "/" to "/dashboard" if companyToken is present */}
+        <Route
+          path="/"
+          element={companyToken ? <Navigate to="/dashboard/manage-jobs" replace /> : <Home />}
+        />
+
         {/* Top-level routes */}
-        <Route path="/" element={<Home />} />
         <Route path="/applications" element={<Applications />} />
         <Route path="/apply-job/:id" element={<ApplyJob />} />
 
