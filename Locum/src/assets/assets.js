@@ -73,12 +73,12 @@ export const assets = {
 }
 
 export const JobCategories = [
-    "Doctor",
-    "Clinic Assistant",
-    "Staff Nurse",
-    "Medical Assistant",
-    "Radiographer",
-    "Sonographer",
+    "Computer System Analyst",
+    "Database Administrator",
+    "Web Developer",
+    "Data Science",
+    "Information Security Analyst",
+    "Network Administrator",
 ]
 
 export const JobLocations = [
